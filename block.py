@@ -23,6 +23,16 @@ class Block:
             movedTiles.append(position)
         return movedTiles
 
+    def rotate(self):
+        self.rotationState += 1
+        if self.rotationState == len(self.cells):
+            self.rotationState = 0
+
+    def undoRotation(self):
+        self.rotationState -= 1
+        if self.rotationState == -1:
+            self.rotationState = len(self.cells) - 1
+
 
     def draw(self, screen):
         tiles = self.getCellPositions()
